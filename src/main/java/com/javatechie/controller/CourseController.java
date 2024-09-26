@@ -41,6 +41,11 @@ public class CourseController {
         return course.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    @GetMapping(value = "welcome/{user}")
+    public ResponseEntity<String> welcomeUser(@PathVariable String user) {
+       
+      return  ResponseEntity.status(HttpStatus.FOUND).body("Welcome to the app Mr. "+user);
+    }
 
     @PutMapping(value = "/{id}", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Course> updateCourse(@PathVariable int id, @RequestBody Course newCourse) {
