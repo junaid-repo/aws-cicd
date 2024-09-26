@@ -2,6 +2,9 @@ package com.javatechie.controller;
 
 import com.javatechie.dto.Course;
 import com.javatechie.service.CourseService;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/courses")
+@Slf4j
 public class CourseController {
 
     @Autowired
@@ -26,7 +30,7 @@ public class CourseController {
 
     @GetMapping(produces = "application/json")
     public ResponseEntity<List<Course>> getAllCourses() {
-    	System.out.println("entering into getAllCourses controller ");
+    	log.info("entering into getAllCourses controller ");
         List<Course> courses = courseService.getAllCourses();
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
