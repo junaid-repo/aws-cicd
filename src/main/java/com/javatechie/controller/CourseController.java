@@ -26,6 +26,7 @@ public class CourseController {
 
     @GetMapping(produces = "application/json")
     public ResponseEntity<List<Course>> getAllCourses() {
+    	System.out.println("entering into getAllCourses controller");
         List<Course> courses = courseService.getAllCourses();
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
